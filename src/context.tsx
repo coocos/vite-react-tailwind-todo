@@ -39,10 +39,7 @@ type Action =
       id: Task["id"];
     };
 
-export const reducer = (
-  state: typeof initialState,
-  action: Action
-): typeof initialState => {
+export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "ADD_TASK":
       return {
