@@ -2,18 +2,20 @@ import React, { useState, useContext } from "react";
 import { TaskContext } from "./context";
 
 export const NewTaskItem = () => {
-  const [description, setDescription] = useState("New task");
+  const [description, setDescription] = useState("Describe task");
   const { dispatch } = useContext(TaskContext);
 
   const updateDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.currentTarget.value);
   };
 
-  const addTask = (description: string) =>
+  const addTask = (description: string) => {
     dispatch({
       type: "ADD_TASK",
       description,
     });
+    setDescription("Describe task");
+  };
 
   return (
     <div className="flex gap-4">
