@@ -3,12 +3,19 @@ import { Task, TaskContext } from "./context";
 
 type TaskItemProps = Task & {
   onDelete: (id: number) => void;
+  onCheck: (id: number) => void;
 };
 
-const TaskItem = ({ id, done, description, onDelete }: TaskItemProps) => {
+const TaskItem = ({
+  id,
+  done,
+  description,
+  onDelete,
+  onCheck,
+}: TaskItemProps) => {
   return (
     <li className="flex items-center p-4 gap-4 border-solid border-4 rounded-xl border-green-400">
-      <button>
+      <button onClick={() => onCheck(id)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -24,7 +31,9 @@ const TaskItem = ({ id, done, description, onDelete }: TaskItemProps) => {
           />
         </svg>
       </button>
-      <div className="flex-1">{description}</div>
+      <div className={`flex-1 ${done ? "line-through" : null}`}>
+        {description}
+      </div>
       <button onClick={() => onDelete(id)} className="p-4 hover:text-red-600">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,10 +63,22 @@ export const Tasks = () => {
       id,
     });
 
+  const onCheck = (id: number) => {
+    dispatch({
+      type: "CHECK_TASK",
+      id,
+    });
+  };
+
   return (
     <ul>
       {state.tasks.map((task) => (
-        <TaskItem key={task.id} onDelete={() => onDelete(task.id)} {...task} />
+        <TaskItem
+          key={task.id}
+          onDelete={onDelete}
+          onCheck={onCheck}
+          {...task}
+        />
       ))}
     </ul>
   );
