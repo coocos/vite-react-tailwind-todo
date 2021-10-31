@@ -1,8 +1,10 @@
 import React, { useState, useContext, FormEvent } from "react";
 import { TaskContext } from "../context";
 
+const PLACEHOLDER_DESCRIPTION = "Example task description";
+
 export const NewTaskItem = () => {
-  const [description, setDescription] = useState("Example task description");
+  const [description, setDescription] = useState(PLACEHOLDER_DESCRIPTION);
   const { dispatch } = useContext(TaskContext);
 
   const updateDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +20,18 @@ export const NewTaskItem = () => {
     setDescription("");
   };
 
+  const clearPlaceholder = () => {
+    if (description == PLACEHOLDER_DESCRIPTION) {
+      setDescription("");
+    }
+  };
+
+  const restorePlaceholder = () => {
+    if (description.length == 0) {
+      setDescription(PLACEHOLDER_DESCRIPTION);
+    }
+  };
+
   return (
     <form className="flex gap-4" onSubmit={addTask}>
       <input
@@ -25,6 +39,8 @@ export const NewTaskItem = () => {
         type="text"
         value={description}
         onChange={updateDescription}
+        onFocus={clearPlaceholder}
+        onBlur={restorePlaceholder}
       />
     </form>
   );
