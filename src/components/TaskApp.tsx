@@ -1,10 +1,9 @@
 import { useReducer } from "react";
 import { Tasks } from "./Tasks";
 import { NewTaskItem } from "./NewTaskItem";
-import { initialState, reducer, TaskContext } from "./context";
-import "./index.css";
+import { initialState, reducer, TaskContext } from "../context";
 
-function App() {
+function TaskApp() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -20,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default TaskApp;

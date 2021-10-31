@@ -1,5 +1,7 @@
 import { useContext } from "react";
-import { Task, TaskContext } from "./context";
+
+import { Task } from "../types";
+import { TaskContext } from "../context";
 
 type TaskItemProps = Task & {
   onDelete: (id: number) => void;

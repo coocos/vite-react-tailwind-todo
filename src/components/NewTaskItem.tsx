@@ -1,8 +1,8 @@
 import React, { useState, useContext, FormEvent } from "react";
-import { TaskContext } from "./context";
+import { TaskContext } from "../context";
 
 export const NewTaskItem = () => {
-  const [description, setDescription] = useState("Describe task");
+  const [description, setDescription] = useState("Example task description");
   const { dispatch } = useContext(TaskContext);
 
   const updateDescription = (e: React.ChangeEvent<HTMLInputElement>) => {

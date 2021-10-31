@@ -1,14 +1,5 @@
 import { createContext } from "react";
-
-export type Task = {
-  id: number;
-  done: boolean;
-  description: string;
-};
-
-type State = {
-  tasks: Task[];
-};
+import { State, Task } from "../types";
 
 export const initialState: State = {
   tasks: [
@@ -75,14 +66,6 @@ export const reducer = (state: State, action: Action): State => {
 };
 
 export const TaskContext = createContext({
-  state: {
-    tasks: [
-      {
-        id: 1,
-        done: false,
-        description: "Placeholder",
-      },
-    ],
-  },
+  state: initialState,
   dispatch: (action: Action) => {},
 });
