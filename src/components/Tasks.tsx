@@ -16,8 +16,8 @@ const TaskItem = ({
   onCheck,
 }: TaskItemProps) => {
   return (
-    <li className="flex items-center p-4 gap-4 border-solid border-4 rounded-xl border-green-400">
-      <button onClick={() => onCheck(id)}>
+    <li className="flex items-center p-2 gap-4 bg-white first:rounded-t-2xl last:rounded-b-2xl border-gray-200 border-l border-r border-t last:border-b shadow-sm">
+      <button onClick={() => onCheck(id)} className="p-4 text-gray-400">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -33,10 +33,17 @@ const TaskItem = ({
           />
         </svg>
       </button>
-      <div className={`flex-1 ${done ? "line-through" : null}`}>
+      <div
+        className={`text-gray-600 flex-1 ${
+          done ? "line-through text-gray-300" : null
+        }`}
+      >
         {description}
       </div>
-      <button onClick={() => onDelete(id)} className="p-4 hover:text-red-600">
+      <button
+        onClick={() => onDelete(id)}
+        className="p-4 text-gray-400 hover:text-red-300 transition duration-250 ease-in-out hover:scale-125"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -73,7 +80,7 @@ export const Tasks = () => {
   };
 
   return (
-    <ul>
+    <ul className="mt-4">
       {state.tasks.map((task) => (
         <TaskItem
           key={task.id}
