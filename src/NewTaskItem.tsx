@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FormEvent } from "react";
 import { TaskContext } from "./context";
 
 export const NewTaskItem = () => {
@@ -9,23 +9,24 @@ export const NewTaskItem = () => {
     setDescription(e.currentTarget.value);
   };
 
-  const addTask = (description: string) => {
+  const addTask = (event: FormEvent) => {
+    event.preventDefault();
     dispatch({
       type: "ADD_TASK",
       description,
     });
-    setDescription("Describe task");
+    setDescription("");
   };
 
   return (
-    <div className="flex gap-4">
+    <form className="flex gap-4" onSubmit={addTask}>
       <input
         className="flex-grow p-4 rounded-xl border-4 border-green-400"
         type="text"
         value={description}
         onChange={updateDescription}
       />
-      <button onClick={() => addTask(description)}>
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -41,6 +42,6 @@ export const NewTaskItem = () => {
           />
         </svg>
       </button>
-    </div>
+    </form>
   );
 };
