@@ -5,13 +5,18 @@ export const initialState: State = {
   tasks: [
     {
       id: 1,
-      done: true,
-      description: "Task #1",
+      done: false,
+      description: "Create application",
     },
     {
       id: 2,
-      done: false,
-      description: "Task #2",
+      done: true,
+      description: "Configure Tailwind",
+    },
+    {
+      id: 3,
+      done: true,
+      description: "Install Vite",
     },
   ],
 };

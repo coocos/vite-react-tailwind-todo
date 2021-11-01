@@ -16,11 +16,16 @@ const TaskItem = ({
   onCheck,
 }: TaskItemProps) => {
   return (
-    <li className="flex items-center p-2 gap-4 bg-white first:rounded-t-2xl last:rounded-b-2xl border-gray-200 border-l border-r border-t last:border-b shadow-sm">
-      <button onClick={() => onCheck(id)} className="p-4 text-gray-400">
+    <li
+      onClick={() => onCheck(id)}
+      className="flex items-center p-2 gap-4 bg-white first:rounded-t-2xl last:rounded-b-2xl border-gray-200 border-l border-r border-t last:border-b shadow-sm cursor-pointer text-gray-600"
+    >
+      <span className="p-4 text-gray-400 transition duration-250 ease-in-out">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
+          className={`h-6 w-6 transition duration-250 ${
+            done ? "opacity-100 text-purple-400" : "opacity-10"
+          }`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -32,17 +37,13 @@ const TaskItem = ({
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-      </button>
-      <div
-        className={`text-gray-600 flex-1 ${
-          done ? "line-through text-gray-300" : null
-        }`}
-      >
+      </span>
+      <div className={`flex-1 select-none ${done ? "text-gray-300" : null}`}>
         {description}
       </div>
       <button
         onClick={() => onDelete(id)}
-        className="p-4 text-gray-400 hover:text-red-300 transition duration-250 ease-in-out hover:scale-125"
+        className="p-4 text-gray-400 hover:text-gray-600 transition duration-250 ease-in-out hover:scale-125"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
