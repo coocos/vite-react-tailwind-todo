@@ -9,11 +9,15 @@ function TaskApp() {
 
   return (
     <TaskContext.Provider value={{ state, dispatch }}>
-      <Header />
-      <div className="flex flex-col gap-4 max-w-2xl mx-auto p-4">
-        <NewTaskItem />
-        <Tasks />
-      </div>
+      <main className={state.theme}>
+        <div className="min-h-screen bg-light-purple-split dark:bg-dark-purple-split">
+          <Header />
+          <div className="flex flex-col gap-4 max-w-2xl mx-auto p-4">
+            <NewTaskItem />
+            <Tasks />
+          </div>
+        </div>
+      </main>
     </TaskContext.Provider>
   );
 }

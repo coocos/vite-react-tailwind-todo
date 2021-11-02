@@ -6,4 +6,5 @@ export type Task = {
 
 export type State = {
   tasks: Task[];
+  theme: "dark" | "light";
 };

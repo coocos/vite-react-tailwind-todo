@@ -19,6 +19,9 @@ export const initialState: State = {
       description: "Install Vite",
     },
   ],
+  theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light",
 };
 
 type Action =
@@ -33,6 +36,9 @@ type Action =
   | {
       type: "CHECK_TASK";
       id: Task["id"];
+    }
+  | {
+      type: "TOGGLE_THEME";
     };
 
 export const reducer = (state: State, action: Action): State => {
@@ -66,6 +72,11 @@ export const reducer = (state: State, action: Action): State => {
               }
             : task
         ),
+      };
+    case "TOGGLE_THEME":
+      return {
+        ...state,
+        theme: state.theme == "light" ? "dark" : "light",
       };
   }
 };
