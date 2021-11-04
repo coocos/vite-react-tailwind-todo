@@ -4,8 +4,8 @@ import { Task } from "../types";
 import { TaskContext } from "../context";
 
 type TaskItemProps = Task & {
-  onDelete: (id: number) => void;
-  onCheck: (id: number) => void;
+  onDelete: (id: string) => void;
+  onCheck: (id: string) => void;
 };
 
 const CheckboxIcon = ({ done }: { done: boolean }) => (
@@ -78,7 +78,7 @@ export const Tasks = () => {
   const { state, dispatch } = useContext(TaskContext);
 
   const onDelete = useCallback(
-    (id: number) =>
+    (id: string) =>
       dispatch({
         type: "DELETE_TASK",
         id,
@@ -87,7 +87,7 @@ export const Tasks = () => {
   );
 
   const onCheck = useCallback(
-    (id: number) => {
+    (id: string) => {
       dispatch({
         type: "CHECK_TASK",
         id,

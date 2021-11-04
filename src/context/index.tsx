@@ -1,20 +1,21 @@
 import { createContext } from "react";
 import { State, Task } from "../types";
+import { v4 as uuid4 } from "uuid";
 
 export const initialState: State = {
   tasks: [
     {
-      id: 1,
+      id: uuid4(),
       done: false,
       description: "Create application",
     },
     {
-      id: 2,
+      id: uuid4(),
       done: true,
       description: "Configure Tailwind",
     },
     {
-      id: 3,
+      id: uuid4(),
       done: true,
       description: "Install Vite",
     },
@@ -50,8 +51,7 @@ export const reducer = (state: State, action: Action): State => {
           ...state.tasks,
           {
             done: false,
-            // FIXME: Use UUIDs or hashes for IDs instead
-            id: state.tasks.length + 1,
+            id: uuid4(),
             description: action.description,
           },
         ],
