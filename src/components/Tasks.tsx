@@ -10,12 +10,10 @@ type TaskItemProps = Task & {
 
 const CheckboxIcon = ({ done }: { done: boolean }) => {
   return (
-    <div className="p-4 text-purple-400 dark:text-gray-600 transition duration-250 ease-in-out">
+    <div className="p-4 text-purple-400 dark:text-gray-600">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className={`h-6 w-6 transition duration-250 ${
-          done ? "opacity-100 " : "opacity-0"
-        }`}
+        className={`h-6 w-6 ${done ? "opacity-100 " : "opacity-0"}`}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

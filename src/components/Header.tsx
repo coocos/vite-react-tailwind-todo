@@ -40,10 +40,7 @@ export const Header = () => {
   return (
     <header className="flex items-center max-w-2xl mx-auto p-8 text-gray-100">
       <h1 className="flex-grow text-4xl select-none">T O D O</h1>
-      <button
-        className="transition ease-in-out duration-250 hover:scale-125"
-        onClick={() => dispatch({ type: "TOGGLE_THEME" })}
-      >
+      <button onClick={() => dispatch({ type: "TOGGLE_THEME" })}>
         {theme == "dark" ? <SunIcon /> : <MoonIcon />}
       </button>
     </header>
