@@ -1,4 +1,4 @@
-import React, { useState, useContext, FormEvent } from "react";
+import React, { useState, useContext, useRef, FormEvent } from "react";
 import { TaskContext } from "../context";
 
 const PLACEHOLDER_DESCRIPTION = "Example task description";
@@ -6,6 +6,7 @@ const PLACEHOLDER_DESCRIPTION = "Example task description";
 export const NewTaskItem = () => {
   const [description, setDescription] = useState(PLACEHOLDER_DESCRIPTION);
   const { dispatch } = useContext(TaskContext);
+  const inputElement = useRef<HTMLInputElement>(null);
 
   const updateDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.currentTarget.value);
@@ -18,6 +19,7 @@ export const NewTaskItem = () => {
       description,
     });
     setDescription("");
+    inputElement.current?.blur();
   };
 
   const clearPlaceholder = () => {
@@ -37,6 +39,7 @@ export const NewTaskItem = () => {
       <input
         className="flex-grow p-6 text-gray-600 rounded-xl border shadow-sm focus:outline-none focus:ring-4 focus:ring-purple-300"
         type="text"
+        ref={inputElement}
         value={description}
         onChange={updateDescription}
         onFocus={clearPlaceholder}
