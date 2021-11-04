@@ -81,7 +81,9 @@ export const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const TaskContext = createContext({
-  state: initialState,
-  dispatch: (action: Action) => {},
-});
+type ContextValue = {
+  state: State;
+  dispatch: (action: Action) => void;
+};
+
+export const TaskContext = createContext<ContextValue>({} as ContextValue);
