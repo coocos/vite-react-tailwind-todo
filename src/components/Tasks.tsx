@@ -58,7 +58,7 @@ const TaskItem = ({
 }: TaskItemProps) => (
   <li
     onClick={() => onCheck(id)}
-    className="flex items-center p-2 gap-4 bg-white dark:bg-gray-700 first:rounded-t-2xl last:rounded-b-2xl border-gray-200 dark:border-gray-800 border-l border-r border-t last:border-b shadow-sm cursor-pointer text-gray-600 dark:text-gray-300"
+    className="flex items-center p-2 gap-4 bg-white dark:bg-gray-700 first:rounded-t-2xl last:rounded-b-2xl border-gray-200 dark:border-gray-600 border-l border-r border-t last:border-b shadow-sm cursor-pointer text-gray-600 dark:text-gray-300"
   >
     <CheckboxIcon done={done} />
     <div
