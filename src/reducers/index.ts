@@ -1,8 +1,8 @@
-import { v4 as uuid4 } from "uuid";
 import { Task, State } from "../types";
 
 export type Action =
   | {
+      id: Task["id"];
       type: "ADD_TASK";
       description: Task["description"];
     }
@@ -27,7 +27,7 @@ export const reducer = (state: State, action: Action): State => {
           ...state.tasks,
           {
             done: false,
-            id: uuid4(),
+            id: action.id,
             description: action.description,
           },
         ],

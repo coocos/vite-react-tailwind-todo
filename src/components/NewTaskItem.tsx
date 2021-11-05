@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, FormEvent } from "react";
+import { v4 as uuid4 } from "uuid";
 import { TaskContext } from "../context";
 
 const PLACEHOLDER_DESCRIPTION = "Example task description";
@@ -15,6 +16,7 @@ export const NewTaskItem = () => {
   const addTask = (event: FormEvent) => {
     event.preventDefault();
     dispatch({
+      id: uuid4(),
       type: "ADD_TASK",
       description,
     });
