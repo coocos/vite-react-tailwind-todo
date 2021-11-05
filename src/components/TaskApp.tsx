@@ -2,7 +2,8 @@ import { useReducer } from "react";
 import { Header } from "./Header";
 import { Tasks } from "./Tasks";
 import { NewTaskItem } from "./NewTaskItem";
-import { initialState, reducer, TaskContext } from "../context";
+import { initialState, TaskContext } from "../context";
+import { reducer } from "../reducers";
 
 function TaskApp() {
   const [state, dispatch] = useReducer(reducer, initialState);
