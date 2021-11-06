@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import { memo, useCallback, useContext } from "react";
 
 import { Task } from "../types";
 import { TaskContext } from "../context";
@@ -72,7 +72,7 @@ const TaskItem = ({
   </li>
 );
 
-const MemoizedTaskItem = React.memo(TaskItem);
+const MemoizedTaskItem = memo(TaskItem);
 
 export const Tasks = () => {
   const { state, dispatch } = useContext(TaskContext);

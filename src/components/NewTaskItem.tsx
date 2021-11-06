@@ -37,7 +37,7 @@ export const NewTaskItem = () => {
   };
 
   return (
-    <form className="flex gap-4" onSubmit={addTask}>
+    <form className="flex gap-4" role="form" onSubmit={addTask}>
       <input
         className="flex-grow p-6 text-gray-600 rounded-xl border shadow-sm focus:outline-none focus:ring-4 focus:ring-purple-300"
         type="text"
